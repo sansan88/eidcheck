@@ -1,0 +1,7 @@
+{
+  "name": "eid-check",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
