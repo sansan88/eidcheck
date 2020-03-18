@@ -1,20 +1,219 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar  color="success">
     <ion-title>
-      Blank
+      eID+ check
     </ion-title>
+    <ion-buttons slot="end">
+    <!--  <ion-button color="primary" (click)="presentClaims()">check eID+</ion-button>-->
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" >
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title size="large">eID+ check</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+
+  <ion-grid *ngIf="check && check.checkType.includes('alter')">
+    <ion-row>
+      <ion-col size="12" size-sm *ngIf="check && ( check.checkType.includes('alter18') || check.checkType.includes('alterAllgemein') ) ">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Altersprüfung</ion-card-subtitle>
+            <ion-card-title>18 Jahre</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="isok" *ngIf="data.is18">
+            OK
+          </ion-card-content>
+          <ion-card-content class="notok" *ngIf="!data.is18">
+            NOT OK
+          </ion-card-content>
+        </ion-card>
+
+
+      </ion-col>
+      <ion-col size="12" size-sm *ngIf="check && ( check.checkType.includes('alter16') || check.checkType.includes('alterAllgemein') ) ">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Altersprüfung</ion-card-subtitle>
+            <ion-card-title>16 Jahre</ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="isok" *ngIf="data.is16">
+            OK
+          </ion-card-content>
+          <ion-card-content class="notok" *ngIf="!data.is16">
+            NOT OK
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-list *ngIf="data && check.checkType.includes('eid')">
+    <ion-list-header>Mein eID+ Profil</ion-list-header>
+
+    <ion-item *ngIf="data.picture">
+      <ion-avatar slot="start">
+        <img src="{{'data:image/jpeg;base64,'+ data.picture}}">
+      </ion-avatar>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.picture}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.given_name">
+
+      <ion-label>{{data.given_name}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.given_name}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.family_name">
+
+      <ion-label>{{data.family_name}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.family_name}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.birth_date">
+
+      <ion-label>{{data.birth_date}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.birth_date}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.gender">
+      <ion-label>{{data.gender}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.gender}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.nationality">
+      <ion-label>{{data.nationality}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.nationality}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.place_of_origin">
+      <ion-label>{{data.place_of_origin}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.place_of_origin}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.phone">
+      <ion-label>{{data.phone}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.phone}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.email">
+      <ion-label>{{data.email}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.email}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.street_address">
+      <ion-label>{{data.street_address}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.street_address}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.postal_code">
+      <ion-label>{{data.postal_code}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.postal_code}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.locality">
+      <ion-label>{{data.locality}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.locality}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.region">
+      <ion-label>{{data.region}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.region}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+    <ion-item *ngIf="data.country">
+      <ion-label>{{data.country}} </ion-label>
+      <ion-checkbox slot="end" disabled="true" checked="{{data.verified_simple.country}}" color="primary">
+      </ion-checkbox>
+    </ion-item>
+
+  </ion-list>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm>
+        <ion-card button="true" type="button" (click)="checkAlterAllgemein()"  color="primary">
+          <ion-card-header>
+            <ion-card-subtitle>Altersprüfung</ion-card-subtitle>
+            <ion-card-title>Allgemein</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            Zero Knwoledge Proof für Identitätsprüfungen. Dein Geburtstdatum und dein Bild wird dazu gebraucht.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+
+      <ion-col size="12" size-sm>
+
+        <ion-card button="true" type="button" (click)="checkAlter18()"  color="secondary">
+          <ion-card-header>
+            <ion-card-subtitle>Altersprüfung</ion-card-subtitle>
+            <ion-card-title>18 Jahre</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            Zero Knwoledge Proof für Identitätsprüfungen. Dein Geburtstdatum und dein Bild wird dazu gebraucht.
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+
+      <ion-col size="12" size-sm>
+        <ion-card button="true" type="button" (click)="checkAlter16()"  color="tertiary">
+          <ion-card-header>
+            <ion-card-subtitle>Altersprüfung</ion-card-subtitle>
+            <ion-card-title>16 Jahre</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            Zero Knwoledge Proof für Identitätsprüfungen. Dein Geburtstdatum und dein Bild wird dazu gebraucht.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-card button="true" type="button" (click)="presentClaims()"  color="primary">
+          <ion-card-header>
+            <ion-card-subtitle>Benutzerdefinierte eID+ Check</ion-card-subtitle>
+            <ion-card-title>Teste deine eID+</ion-card-title>
+          </ion-card-header>
+    
+          <ion-card-content>
+            Überprüfe welche Attribute von dir übermittelt werden!
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+
+
+    </ion-row>
+
+  </ion-grid>
+
+
 </ion-content>

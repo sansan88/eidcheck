@@ -1,8 +1,8 @@
 {
   "name": "eid-check",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Sandro Scalco",
+  "homepage": "https://eid-check.ch",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -18,7 +18,9 @@
     "@angular/forms": "~8.2.14",
     "@angular/platform-browser": "~8.2.14",
     "@angular/platform-browser-dynamic": "~8.2.14",
+    "@angular/pwa": "^0.900.6",
     "@angular/router": "~8.2.14",
+    "@angular/service-worker": "~8.2.14",
     "@capacitor/core": "1.5.1",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/splash-screen": "^5.0.0",
