@@ -7,7 +7,43 @@
   background-color: red;
 }
 
+.toolbar-container{
+  background-color: var(--ion-color-primary) !important;
+}
 
+:host{
+  --ion-toolbar-background: var(--ion-color-primary) !important;
+  --background: var(--ion-color-primary) !important;
+}
+
+.pictureage{
+  height: 300px;
+  width: 300px;
+
+}
+ion-avatar{
+
+  height: 300px !important;
+  width: 300px !important;
+
+}
+
+.logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+  height: 100px !important;
+  width: 100px !important;
+
+}
+
+.logotitel{
+  text-align: center;
+}
+
+
+/*
 #container {
   text-align: center;
 
@@ -39,3 +75,4 @@
 ion-content ion-toolbar {
   --background: translucent;
 }
+*/

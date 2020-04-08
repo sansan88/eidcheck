@@ -91,7 +91,41 @@ export class ReturnPage implements OnInit {
             this.navCtrl.navigateForward('/home');
           });
 
+/*
+* Kurzarbeit
+*/                    
+        }else if (check.checkType.includes("kurzarbeit")){
+          this.api.geteIDData(params.code, "token", isWeb, check.claims).subscribe(eidDaten => {
+
+            console.log("EID DATA :" + JSON.stringify(eidDaten));
+  
+            this.navCtrl.navigateForward('/kurzarbeit', {
+              state: {
+                eIDData: eidDaten,
+                check:   check
+              }
+            }).then(routerSuccess => {
+              this.clear();
+              loading.dismiss();
+              console.log("navigation done!");
+            }, error => {
+              this.clear();
+              console.error(error);
+              loading.dismiss();
+              this.navCtrl.navigateForward('/kurzarbeit');
+            });
+          }, error => {
+            this.clear();
+            console.error(error);
+            loading.dismiss();
+            this.navCtrl.navigateForward('/kurzarbeit');
+          });
+
         }else{
+/*
+* Allgemein eID+ check
+*/          
+          
           this.api.geteIDData(params.code, "token", isWeb, check.claims).subscribe(eidDaten => {
 
             console.log("EID DATA :" + JSON.stringify(eidDaten));

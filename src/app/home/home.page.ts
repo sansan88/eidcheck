@@ -57,7 +57,7 @@ export class HomePage {
     });
 
   }
-
+  
 
   checkAlterAllgemein() {
     this.setObject("check", {
@@ -65,7 +65,6 @@ export class HomePage {
       "claims": ["birth_date", "picture"]
     });
     this.checkIdentity(["birth_date", "picture"]);
-
   }
 
   checkAlter18() {
@@ -74,8 +73,8 @@ export class HomePage {
       "claims": ["birth_date", "picture"]
     });
     this.checkIdentity(["birth_date", "picture"]);
-
   }
+
   checkAlter16() {
     this.setObject("check", {
       "checkType": "alter16",
@@ -89,7 +88,6 @@ export class HomePage {
     if (this.plt.is("cordova")) {
       isWeb = false;
     }
-
     this.api.geteIDAuthorizationURL(isWeb, claims.toString()).subscribe(data => {
 
       //console.log("received token: " + data["token"]);

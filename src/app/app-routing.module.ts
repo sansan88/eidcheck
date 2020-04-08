@@ -8,6 +8,10 @@ const routes: Routes = [
     path: 'return',
     loadChildren: () => import('./return/return.module').then( m => m.ReturnPageModule)
   },
+  {
+    path: 'testgrid',
+    loadChildren: () => import('./testgrid/testgrid.module').then( m => m.TestgridPageModule)
+  }
 ];
 
 @NgModule({

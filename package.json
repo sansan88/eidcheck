@@ -1,6 +1,6 @@
 {
   "name": "eid-check",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Sandro Scalco",
   "homepage": "https://eid-check.com",
   "scripts": {
@@ -55,5 +55,5 @@
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   },
-  "description": "eID+ check App - Zero Knowledge Proof of Identity"
+  "description": "eID+ check App - Zero Knowledge Proof of your Identity"
 }
