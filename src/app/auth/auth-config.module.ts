@@ -6,7 +6,8 @@ import { AuthModule } from 'angular-auth-oidc-client';
     imports: [AuthModule.forRoot({
         config: {
               authority: 'https://europe-west6-starthub-schaffhausen.cloudfunctions.net/api/oidc',
-              redirectUrl: window.location.origin,
+              redirectUrl: window.location.origin + '/return',
+              //
               postLogoutRedirectUri: window.location.origin,
               clientId: 'eidcheckApp',
               scope: 'openid email profile address', // 'openid profile offline_access ' + your scopes
