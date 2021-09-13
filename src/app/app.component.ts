@@ -14,6 +14,8 @@ export class AppComponent implements OnInit{
       /*...*/
     });
 
+    this.oidcSecurityService.authorize();
+
     //this.login();
     const token = this.oidcSecurityService.getAccessToken();
     console.log(token);
