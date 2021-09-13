@@ -14,7 +14,9 @@ export class AppComponent implements OnInit{
       /*...*/
     });
 
-    this.login();
+    //this.login();
+    const token = this.oidcSecurityService.getAccessToken();
+    console.log(token);
   }
 
   login() {
