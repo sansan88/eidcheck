@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AuthModule } from 'angular-auth-oidc-client';
+import { AuthModule, LogLevel  } from 'angular-auth-oidc-client';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import { AuthModule } from 'angular-auth-oidc-client';
               responseType: 'code',
               silentRenew: true,
               useRefreshToken: true,
-              renewTimeBeforeTokenExpiresInSeconds: 30,
+              logLevel: LogLevel.Debug,
           }
       })],
     exports: [AuthModule],
