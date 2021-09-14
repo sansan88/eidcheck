@@ -15,6 +15,10 @@ export class ReturnPage implements OnInit {
 
     this.activatedRoute.queryParams.subscribe(params => {
       const code = params.code;
+      const state = params.state;
+
+      //console.log(code);
+      //console.log(state);
 
       const httpOptions = {
         headers: new HttpHeaders({
