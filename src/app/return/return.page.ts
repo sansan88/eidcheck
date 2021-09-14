@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router, ActivatedRoute, Params} from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-return',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReturnPage implements OnInit {
 
-  constructor() { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      const code = params.code;
+
+      const httpOptions = {
+        headers: new HttpHeaders({
+          authorization: 'Bearer ' + code,
+        }),
+      };
+    });
+
+
   }
 
 }
