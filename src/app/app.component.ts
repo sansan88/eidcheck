@@ -12,23 +12,11 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken, idToken }) => {
-      console.log(isAuthenticated, userData, accessToken, idToken);
-
-      const httpOptions = {
-        headers: new HttpHeaders({
-          authorization: 'Bearer ' + accessToken,
-        }),
-      };
+      console.log('app authenticated', isAuthenticated);
+      console.log(`Current access token is '${accessToken}'`);
 
     });
 
   }
 
-  login() {
-    this.oidcSecurityService.authorize();
-  }
-
-  logout() {
-    this.oidcSecurityService.logoff();
-  }
 }
