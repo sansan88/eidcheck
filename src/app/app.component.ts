@@ -1,5 +1,6 @@
 import { Component,OnInit  } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +14,13 @@ export class AppComponent implements OnInit{
     this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated, userData, accessToken, idToken }) => {
       console.log(isAuthenticated, userData, accessToken, idToken);
 
-    });
+      const httpOptions = {
+        headers: new HttpHeaders({
+          authorization: 'Bearer ' + accessToken,
+        }),
+      };
 
+    });
 
   }
 

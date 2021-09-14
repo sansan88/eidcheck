@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,12 @@ export class HomePage {
 
     const token = this.oidcSecurityService.getAccessToken();
     console.log(token);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: 'Bearer ' + token,
+      }),
+    };
 
 
   }
