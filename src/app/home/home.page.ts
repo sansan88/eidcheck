@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { OidcSecurityService } from 'angular-auth-oidc-client';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,15 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(public oidcSecurityService: OidcSecurityService) {}
 
-  login(){
-    
+  async login(){
+
+    this.oidcSecurityService.authorize();
+
+    const token = this.oidcSecurityService.getAccessToken();
+    console.log(token);
+
+
   }
 }

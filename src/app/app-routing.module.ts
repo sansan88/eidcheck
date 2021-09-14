@@ -6,6 +6,10 @@ const routes: Routes = [
     path: '',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
+  {
+    path: 'return',
+    loadChildren: () => import('./return/return.module').then( m => m.ReturnPageModule)
+  },
   /*{
     path: '',
     redirectTo: 'home',
