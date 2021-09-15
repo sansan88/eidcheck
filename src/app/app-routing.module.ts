@@ -10,6 +10,14 @@ const routes: Routes = [
     path: 'return',
     loadChildren: () => import('./return/return.module').then( m => m.ReturnPageModule)
   },
+  {
+    path: 'forbidden',
+    loadChildren: () => import('./forbidden/forbidden.module').then( m => m.ForbiddenPageModule)
+  },
+  {
+    path: 'unauthorized',
+    loadChildren: () => import('./unauthorized/unauthorized.module').then( m => m.UnauthorizedPageModule)
+  },
   /*{
     path: '',
     redirectTo: 'home',
