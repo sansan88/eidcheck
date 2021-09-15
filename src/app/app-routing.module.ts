@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'return',
-    loadChildren: () => import('./return/return.module').then( m => m.ReturnPageModule)
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
     path: 'forbidden',

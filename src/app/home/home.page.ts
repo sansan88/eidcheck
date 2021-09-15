@@ -15,6 +15,7 @@ import {
 import {
   Observable
 } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -27,7 +28,8 @@ export class HomePage implements OnInit {
   isAuthenticated = false;
 
   constructor(
-    public oidcSecurityService: OidcSecurityService) {
+    public oidcSecurityService: OidcSecurityService,
+    private activatedRoute: ActivatedRoute) {
 
   }
 
@@ -42,6 +44,16 @@ export class HomePage implements OnInit {
 
       console.warn('authenticated: ', isAuthenticated);
     });
+
+
+    this.activatedRoute.queryParams.subscribe(params => {
+      const code = params.code;
+      const state = params.state;
+
+      console.log(code);
+
+    });
+
   }
 
   login() {
